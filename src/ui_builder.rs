@@ -22,8 +22,8 @@ pub struct UiRoot;
 #[reflect(Component)]
 pub struct UiContextRoot;
 
-pub struct UiBuilder<'w, 's, 'a, T> {
-    commands: &'a mut Commands<'w, 's>,
+pub struct UiBuilder<'w, 's, T> {
+    commands: Commands<'w, 's>,
     context: T,
 }
 
@@ -32,8 +32,12 @@ impl<'w, 's, T: Copy> UiBuilder<'w, 's, '_, T> {
         self.context
     }
 
-    pub fn commands(&mut self) -> &mut Commands<'w, 's> {
-        self.commands
+    pub fn commands(&mut self) -> Commands<'w, 's> {
+        self.commands.reborrow()
+    }
+
+    pub fn reborrow(&mut self) -> UiBuilder<'w, 's, '_, T> {
+        Self{ commands: self.commands().reborrow(), context: self.context }
     }
 }
 
@@ -89,7 +93,7 @@ pub trait UiBuilderExt<'w, 's> {
 impl<'w, 's> UiBuilderExt<'w, 's> for Commands<'w, 's> {
     fn ui_builder<'a, T>(&'a mut self, context: T) -> UiBuilder<'w, 's, 'a, T> {
         UiBuilder {
-            commands: self,
+            commands: self.reborrow(),
             context,
         }
     }
