@@ -14,9 +14,9 @@ sickle_macros = { path = "crates/sickle_macros" }
 sickle_ui_scaffold = { path = "crates/sickle_ui_scaffold" }
 
 #bevy = { version = "0.14" }
-bevy = { git = "https://github.com/bevyengine/bevy/", branch = "main" }
-bevy_reflect = { git = "https://github.com/bevyengine/bevy/", branch = "main" }
-bevy_ecs_macros = { git = "https://github.com/bevyengine/bevy/", branch = "main" }
+bevy = { git = "https://github.com/bevyengine/bevy/", rev = "291db3e" }
+bevy_reflect = { git = "https://github.com/bevyengine/bevy/", rev = "291db3e" }
+bevy_ecs_macros = { git = "https://github.com/bevyengine/bevy/", rev = "291db3e" }
 #bevy_reflect = { version = "0.14" }
 #bevy_ecs_macros = { version = "0.14" }
 

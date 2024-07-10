@@ -12,5 +12,5 @@ dev = [
 
 [dependencies]
 #bevy = { version = "0.14" }
-bevy = { git = "https://github.com/bevyengine/bevy/", branch = "main" }
+bevy = { git = "https://github.com/bevyengine/bevy/", rev = "291db3e" }
 serde = { version = "1.0", features = ["derive"] }
